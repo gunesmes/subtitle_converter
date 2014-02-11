@@ -78,25 +78,20 @@ class SubsConverter():
     
     def format_file_name(self, fileName, name_sep):
 
-        lastDot = fileName.rfind('.')   #index number of last dot
-        if str(name_sep).rfind("_") == -1:
-            if lastDot == -1:               #means there is no dots in the file name
-                newFileName = fileName + str('_fps_' + str(name_sep)) + '.srt'                    
-            else:
-                baseName = fileName[0: lastDot]
-                ext = fileName[lastDot: len(fileName)]
-                
-                newFileName = baseName + str("_fps_" + str(name_sep)) + ext
+        #index number of last dot
+        lastDot = fileName.rfind('.')   
+        
+        # means that there is no dot in the file name, 
+        # and file name has no file type extension 
+        if lastDot == -1:               
+            newFileName = fileName + str(name_sep) + '.srt'
+            
         else:
-            if lastDot == -1:               #means there is no dots in the file name
-                newFileName = fileName + name_sep + '.srt'                    
-            else:
-                baseName = fileName[0: lastDot]
-                ext = fileName[lastDot: len(fileName)]
-                
-                newFileName = baseName + name_sep + ext
+            baseName = fileName[0: lastDot]
+            ext = fileName[lastDot: len(fileName)]            
+            newFileName = baseName + str(name_sep) + ext            
                                             
-        return newFileName                                
+        return newFileName                                                               
                   
     def convert_substitle(self, fileName, fps_org, fps_tar):
         # this function converts a subtitle file from original frequency to desired 
