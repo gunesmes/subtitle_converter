@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# Author Name: Mesut G�ne�
+# Author Email: gunesmes@gmail.com
+# Author Github username: gunesmes
+
 from subConverter import SubsConverter
 import os
 

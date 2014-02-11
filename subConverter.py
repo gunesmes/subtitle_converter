@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+# Author Name: Mesut Güneş
+# Author Email: gunesmes@gmail.com
+# Author Github username: gunesmes
+
 import sys
 
 class SubsConverter():
