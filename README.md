@@ -1,4 +1,4 @@
-subtitle_converter
+Subtitle Converter
 ==================
 
 This can be used for converting subtitles. There are two main functionality which you can set the time differences by adding or subtracting seconds with the function set_time_dif() and you can change the frequency (FPS) of the subtitles with convert_substitle().
@@ -14,7 +14,7 @@ Clone the project:
 git clone https://github.com/gunesmes/subtitle_converter.git
 ```
    
-# To run the translater
+# To run the Subtitle Converter
 * you must have a valid subtitle in .srt format
 
 * run python file
