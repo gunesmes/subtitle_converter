@@ -41,15 +41,16 @@ class SubsConverter():
         return totalTime
           
     def re_calculate_time_taken(self, timeTaken, add_sub, time):
-        reTimeTaken = list()                    
+        reTimeTaken = list() 
+        print(reTimeTaken)                   
         for i in range(len(timeTaken)):
             if add_sub == 'add': #['A', 'AD', 'ADD']
                 reTimeTaken.append(float(timeTaken[i] + time))
             else:
                 reTimeTaken.append(float(timeTaken[i] - time))
                 if reTimeTaken[i] < 0:
-                    print 'starting time of a subtitle should not be earlier than video!\n please correct the time or try adding time'
-                    sys.exit()
+                    print('starting time of a subtitle should not be earlier than video!\n please correct the time or try adding time')
+                    break
                        
         return reTimeTaken
       
@@ -117,10 +118,10 @@ class SubsConverter():
             else:
                 str0 = line
                 
-            print str0                                              
+            print(str0)                                              
             fw.write(str0)
         
-        print "New file name: ", self.format_file_name(fileName, fps_tar)
+        print("New file name: ", self.format_file_name(fileName, fps_tar))
     
     def set_time_dif(self, fileName, add_sub, time):
         # this function adds or subtract from the time of subtitle to set-up for videos.  
@@ -133,7 +134,7 @@ class SubsConverter():
         elif add_sub.upper() in ['S', 'SU', 'SUB']:
             name_sep = '_-' + str(time) + '_Second'
         else:
-            print "You type '"'%s'"', please type '"'add'"' or '"'sub'"'" %add_sub
+            print("You type '"'%s'"', please type '"'add'"' or '"'sub'"'" %add_sub)
             sys.exit()
            
         fw = self.write_file(fileName, name_sep) 
@@ -146,15 +147,18 @@ class SubsConverter():
                 subsTime = (str0[0], str0[2])
                                           
                 totalTime = self.re_calculate_time_taken(self.calculate_time_taken(subsTime), add_sub, time)
-    
-                formatTime = self.format_time(totalTime)
-                                                                           
-                str0 = formatTime[0] + ' -->' + ' ' + formatTime[1] + '\n'                              
+                print(totalTime)
+                if(totalTime[0] < 0):
+                    fw.write(" * Starting time of a subtitle should not be earlier than video!\n  - please correct the time or try adding time\n" )
+                    break
+                else:
+                    formatTime = self.format_time(totalTime)                                                                        
+                    str0 = formatTime[0] + ' -->' + ' ' + formatTime[1] + '\n' 
             else:
                     str0 = line
                     
-            print str0                                              
+            print(str0)                                              
             fw.write(str0)
         
-        print "New file name: ", self.format_file_name(fileName, name_sep)
+        print("New file name: ", self.format_file_name(fileName, name_sep))
 
